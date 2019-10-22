@@ -6,6 +6,8 @@ import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.session.data.mongo.AbstractMongoSessionConverter;
+import org.springframework.session.data.mongo.JacksonMongoSessionConverter;
 
 @EnableWebFluxSecurity
 public class SecurityConfig {
@@ -31,6 +33,14 @@ public class SecurityConfig {
                 .password("password")
                 .roles("USER,ADMIN")
                 .build());
+    }
+
+    @Bean
+    public AbstractMongoSessionConverter mongoSessionConverter() {
+        // Old session isn't deleted
+        return new JacksonMongoSessionConverter();
+        // Old session is deleted
+        // return new CustomJacksonMongoSessionConverter();
     }
 
 }
