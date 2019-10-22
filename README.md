@@ -1,7 +1,7 @@
 # Webflux Logout Not Delete Session Example
 
 ## About
-Showcase of spring security behavior
+Showcase of spring security behaviour
 
 ## Build
 `./mvnw clean install` 
